@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>SJL Kilpailusäännöt 2025–2026</title>
+<style>
+  :root {
+    --ice: #e8f3fb;
+    --ice-mid: #b0cce8;
+    --blue-dark: #011D41;
+    --blue-mid: #002E6D;
+    --blue: #002E6D;
+    --blue-light: #00ACD7;
+    --gold: #D4A843;
+    --gold-light: #f0a500;
+    --text: #011D41;
+    --text-muted: #3a5070;
+    --bg: #CFCFCD;
+    --card: #ffffff;
+    --border: #b8cce0;
+    --nav-w: 300px;
+    --header-h: 56px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    background: var(--blue-dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  }
+  .header-logo {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #fff;
+    letter-spacing: -0.02em;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-logo img {
+    height: 38px;
+    width: auto;
+  }
+  .header-logo span { color: var(--gold); }
+  .header-season {
+    font-size: 0.65rem;
+    color: var(--ice-mid);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  #menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  #menu-toggle span {
+    display: block;
+    width: 22px; height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+  #menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  #menu-toggle.open span:nth-child(2) { opacity: 0; }
+  #menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  #search-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: #fff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ─── OVERLAY ─── */
+  #overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 150;
+  }
+  #overlay.active { display: block; }
+
+  /* ─── SIDEBAR ─── */
+  #sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--nav-w);
+    height: 100%;
+    background: var(--blue-dark);
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    overflow-y: auto;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  #sidebar.open { transform: translateX(0); }
+
+  .sidebar-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: sticky;
+    top: 0;
+    background: var(--blue-dark);
+    z-index: 1;
+  }
+  .sidebar-title {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .sidebar-sub {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-section {
+    margin-top: 4px;
+  }
+  .nav-section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .nav-section-header:hover { background: rgba(255,255,255,0.04); }
+  .nav-section-num {
+    font-family: Arial, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--blue-light);
+    background: rgba(30,77,140,0.3);
+    border-radius: 4px;
+    padding: 2px 6px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .nav-section-title {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex: 1;
+  }
+  .nav-section-chevron {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.65rem;
+    transition: transform 0.2s;
+  }
+  .nav-section.expanded .nav-section-chevron { transform: rotate(180deg); }
+
+  .nav-rules {
+    display: none;
+    padding: 0 0 6px 0;
+  }
+  .nav-section.expanded .nav-rules { display: block; }
+
+  .nav-rule {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px 8px 32px;
+    cursor: pointer;
+    transition: background 0.12s;
+    border-left: 3px solid transparent;
+  }
+  .nav-rule:hover { background: rgba(255,255,255,0.05); }
+  .nav-rule.active {
+    background: rgba(30,77,140,0.3);
+    border-left-color: var(--blue-light);
+  }
+  .nav-rule-num {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 24px;
+    opacity: 0.8;
+  }
+  .nav-rule-title {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.3;
+  }
+  .nav-rule.active .nav-rule-title { color: #fff; }
+
+  /* ─── MAIN CONTENT ─── */
+  #main {
+    margin-top: var(--header-h);
+    min-height: calc(100vh - var(--header-h));
+    padding: 0;
+  }
+
+  /* ─── HOME VIEW ─── */
+  #home-view {
+    padding: 28px 16px 40px;
+  }
+  .home-hero {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+    border-radius: 16px;
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .home-hero::before {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L90 90 L10 90 Z' fill='white' opacity='0.1'/%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+    opacity: 0.15;
+  }
+  .home-hero-title {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .home-hero-sub {
+    font-size: 0.8rem;
+    color: var(--ice-mid);
+    opacity: 0.8;
+  }
+  .home-stats {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .home-stat {
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    flex: 1;
+  }
+  .home-stat-num {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .home-stat-label {
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+
+  /* Home search - inside hero */
+  .home-search-wrapper-hero {
+    position: relative;
+    margin-top: 20px;
+  }
+  .home-search-wrapper-hero #home-search {
+    width: 100%;
+    padding: 14px 44px 14px 16px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    outline: none;
+    transition: all 0.15s;
+  }
+  .home-search-wrapper-hero #home-search::placeholder {
+    color: rgba(255,255,255,0.6);
+  }
+  .home-search-wrapper-hero #home-search:focus { 
+    border-color: var(--blue-light); 
+    background: rgba(255,255,255,0.15);
+  }
+  .home-search-wrapper-hero #home-search-clear {
+    position: absolute;
+    right: 12px; top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    display: none;
+  }
+
+  .home-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .home-section-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 1px 4px rgba(10,22,40,0.06);
+  }
+  .home-section-card:hover {
+    border-color: var(--blue-light);
+    box-shadow: 0 2px 12px rgba(30,77,140,0.12);
+    transform: translateY(-1px);
+  }
+  .home-section-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #fff;
+  }
+  .home-section-info { flex: 1; }
+  .home-section-name {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .home-section-meta {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+  .home-section-arrow {
+    color: var(--border);
+    font-size: 0.9rem;
+  }
+
+  /* ─── FAVORITES ─── */
+  .fav-section { margin-bottom: 20px; display: none; }
+  .fav-section.has-items { display: block; }
+  .fav-section-title {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 10px; padding: 0 2px;
+  }
+  .fav-star-btn {
+    background: none; border: none; cursor: pointer;
+    padding: 4px 6px; display: flex; align-items: center;
+    flex-shrink: 0; transition: transform 0.15s;
+  }
+  .fav-star-btn:hover { transform: scale(1.2); }
+  .fav-star-btn svg { width: 18px; height: 18px; }
+  .fav-star-btn .star-outline { color: #b8cce0; }
+  .fav-star-btn .star-filled { color: #D4A843; display: none; }
+  .fav-star-btn.active .star-outline { display: none; }
+  .fav-star-btn.active .star-filled { display: block; }
+
+  /* ─── SECTION VIEW ─── */
+  #section-view {
+    display: none;
+  }
+  .section-header-bar {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+    padding: 20px 16px 24px;
+    position: relative;
+  }
+  .section-breadcrumb {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.15s, color 0.15s;
+  }
+  .section-breadcrumb:hover { color: #fff; background: rgba(255,255,255,0.13); }
+  .section-num-badge {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 0.7rem;
+    color: var(--gold);
+    background: rgba(212,168,67,0.15);
+    border: 1px solid rgba(212,168,67,0.3);
+    padding: 3px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.06em;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .section-title-main {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .section-nav {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .section-nav-btn {
+    flex: 1;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.72rem;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+    max-width: 50%;
+  }
+  .section-nav-btn:hover { background: rgba(255,255,255,0.13); color: #fff; }
+  .section-nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+  .section-body {
+    padding: 16px 16px 40px;
+  }
+
+  .rule-card {
+    background: var(--card);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(10,22,40,0.05);
+  }
+  .rule-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 15px;
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .rule-header:hover { background: #f8fbff; }
+  .rule-id {
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    color: var(--blue-light);
+    min-width: 36px;
+  }
+  .rule-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text);
+    flex: 1;
+    line-height: 1.3;
+  }
+  .rule-chevron {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .rule-card.expanded .rule-chevron { transform: rotate(180deg); }
+  .rule-content {
+    display: none;
+    padding: 0 15px 14px 15px;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--text);
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+    white-space: pre-wrap;
+  }
+  .rule-card.expanded .rule-content { display: block; }
+
+  /* ─── SEARCH VIEW ─── */
+  #search-view {
+    display: none;
+    padding: 16px 16px 40px;
+  }
+  .search-box-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  #search-input {
+    width: 100%;
+    padding: 14px 44px 14px 16px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  #search-input:focus { border-color: var(--blue-light); }
+  .search-icon-btn {
+    position: absolute;
+    right: 12px; top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+  .search-results-info {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .search-result-item {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 13px 14px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.12s;
+    box-shadow: 0 1px 3px rgba(10,22,40,0.04);
+  }
+  .search-result-item:hover {
+    border-color: var(--blue-light);
+    box-shadow: 0 2px 10px rgba(30,77,140,0.1);
+  }
+  .search-result-rule {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+  }
+  .search-result-badge {
+    font-family: Arial, sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--blue-light);
+    background: rgba(30,77,140,0.08);
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .search-result-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .search-result-snippet {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .search-highlight { background: rgba(212,168,67,0.35); border-radius: 2px; padding: 0 2px; }
+  .search-empty {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+  .search-empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+  /* ─── RESPONSIVE DESKTOP ─── */
+  @media (min-width: 768px) {
+    #menu-toggle { display: none; }
+    #sidebar {
+      transform: translateX(0) !important;
+    }
+    #main {
+      margin-left: var(--nav-w);
+    }
+    #overlay { display: none !important; }
+    .section-header-bar { padding: 28px 32px 32px; }
+    .section-body { padding: 24px 32px 60px; }
+    #home-view { padding: 32px; }
+    #search-view { padding: 24px 32px 60px; }
+    .home-sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+  }
+
+  /* ─── SCROLLBAR ─── */
+  #sidebar::-webkit-scrollbar { width: 4px; }
+  #sidebar::-webkit-scrollbar-track { background: transparent; }
+  #sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+
+  /* ─── TRANSITIONS ─── */
+  #home-view, #section-view, #search-view {
+    animation: fadeIn 0.2s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <button id="menu-toggle" aria-label="Valikko">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="header-logo">
+    <span>Kilpailusäännöt</span>
+    <div class="header-season">2025–2026</div>
+  </div>
+  <button id="search-toggle" onclick="showSearch()" aria-label="Haku">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+</header>
+
+<!-- OVERLAY -->
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-title">Kilpailusäännöt</div>
+    <div class="sidebar-sub">Suomen Jääkiekkoliitto 2025–2026</div>
+  </div>
+  <div id="sidebar-nav"></div>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+
+  <!-- HOME VIEW -->
+  <div id="home-view">
+    <div class="home-hero">
+      <div class="home-hero-title">SJL Kilpailusäännöt</div>
+      <div class="home-hero-sub">Suomen Jääkiekkoliitto • Kausi 2025–2026</div>
+      <div class="home-search-wrapper-hero">
+        <input type="text" id="home-search" placeholder="Hae säännöistä..." oninput="doHomeSearch(this.value)">
+        <button id="home-search-clear" onclick="clearHomeSearch()">✕</button>
+      </div>
+    </div>
+
+    <div id="home-search-panel" style="display:none;"></div>
+
+    <div class="fav-section" id="fav-section">
+      <div class="fav-section-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 17l-6.5 4 2-7.5L2 9h7L12 2z" fill="#D4A843" stroke="#D4A843" stroke-width="1.5"/></svg>
+        Suosikit
+      </div>
+      <div id="fav-items"></div>
+    </div>
+
+    <div class="home-sections" id="home-sections"></div>
+  </div>
+
+  <!-- SECTION VIEW -->
+  <div id="section-view">
+    <div class="section-header-bar">
+      <div class="section-breadcrumb" onclick="showHome()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Etusivu
+      </div>
+      <div class="section-num-badge" id="section-badge"></div>
+      <div class="section-title-main" id="section-title"></div>
+      <div class="section-nav">
+        <button class="section-nav-btn" id="prev-section-btn">← Edellinen</button>
+        <button class="section-nav-btn" id="next-section-btn">Seuraava →</button>
+      </div>
+    </div>
+    <div class="section-body" id="section-body"></div>
+  </div>
+
+  <!-- SEARCH VIEW -->
+  <div id="search-view">
+    <div class="search-box-wrapper">
+      <input type="text" id="search-input" placeholder="Hae säännöistä..." oninput="performSearch(this.value)">
+      <button class="search-icon-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="search-results-info" id="search-info"></div>
+    <div id="search-results"></div>
+  </div>
+
+</main>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// KILPAILUSÄÄNTÖDATA - Suomen Jääkiekkoliitto 2025-2026
+// ═══════════════════════════════════════════════════════════════════════════
+
+const DB = {
+  sections: [
+    {
+      id: "1",
+      title: "YLEISMÄÄRÄYKSET",
+      intro: "Nämä säännöt on hyväksytty SJL:n liittohallituksessa ja SJL:n liittovaltuustossa ja ovat voimassa kaudella 2025-2026.",
+      rules: [
+        {
+          id: "1.1",
+          title: "Sitoutuminen",
+          content: `Pelaajat, toimihenkilöt ja erotuomarit sitoutuvat pelipassinsa tai rekisteröintinsä lunastamalla ja SJL:n alaiseen toimintaan osallistumalla noudattamaan SJL:n kilpailu-, peli- ja kurinpitosääntöjä sekä eettistä ohjeistusta.
+
+Seurat, joukkueet, pelaajat ja erotuomarit ovat velvollisia noudattamaan sekä kunnioittamaan SJL:n solmimia yhteistyösopimuksia.
+
+Seurojen ja erotuomarikerhojen velvollisuutena on informoida pelaajiaan, toimihenkilöitään ja erotuomareitaan näistä säännöistä.
+
+SJL:n jäsenseurassa missä tahansa tehtävässä toimiva henkilö sitoutuu noudattamaan näitä sääntöjä.`
+        },
+        {
+          id: "1.2",
+          title: "Pelisäännöt",
+          content: "Näiden kilpailusääntöjen lisäksi noudatetaan muilta osin SJL:n virallista sääntökirjaa."
+        },
+        {
+          id: "1.3",
+          title: "Kilpailusäännöistä poikkeaminen",
+          content: "Erittäin painavista syistä SJL:n liittohallitus tai sen valtuuttamana SJL:n kilpailuvaliokunta voi poiketa kilpailusäännöistä. Mikäli Aluehallitus ei ole hallitsemiensa sarjojen (harrastesarjat) osalta muuta päättänyt, noudatetaan näitä sääntöjä myös Alueellisissa harrastesarjoissa."
+        }
+      ]
+    },
+    {
+      id: "2",
+      title: "EETTISET JA TALOUDELLISET MÄÄRÄYKSET",
+      intro: "Eettiset periaatteet ja taloudelliset velvoitteet SJL:n kilpailutoiminnassa.",
+      rules: [
+        {
+          id: "2.1",
+          title: "Eettiset määräykset",
+          content: `Perusperiaatteet
+
+SJL jäseniin ja heidän jäseniinsä sekä kaikkiin pelipassin tai rekisteröinnin omaaviin harrastajiin sovelletaan IIHF:n ja SJL:n säädöksiä, säännöksiä, määräyksiä ja sääntöjä.
+
+Asenne ja käyttäytyminen
+
+SJL:n jäsenten ja heidän jäsentensä on noudatettava käyttäytymisessään ihmisarvon tunnustamisen, rehtiyden, lojaaliuden ja vastuullisuuden periaatteita kaikissa kilpailullisissa, taloudellisissa, sosiaalisissa ja moraalisissa suhteissa.
+
+1. Ihmisarvo tarkoittaa yksilön oikeuksien ja yksityisyyden suojan asianmukaista kunnioittamista.
+   a) Henkilön ihmisarvon loukkaamista ei hyväksytä rodun, ihonvärin, sukupuolen, etnisen alkuperän, uskonnon tai sukupuolisen suuntautumisen perusteella.
+   b) Minkäänlaista häirinnäksi katsottavaa toimintaa ei hyväksytä.
+
+2. Rehtiys tarkoittaa suoraselkäisyyttä ja pidättäytymistä kaikesta väärästä käytöksestä.
+
+3. Vastuullisuus tarkoittaa yksilön vastuulla olevien tehtävien itsenäistä suorittamista huolellisesti.`
+        },
+        {
+          id: "2.2",
+          title: "Antidopingmääräykset",
+          content: `Edellytyksenä SJL:n kilpailutoimintaan osallistumiseen on, että pelaajat noudattavat Suomen Urheilun Eettisen Keskuksen (SUEK), Suomen Jääkiekkoliiton (SJL) ja Kansainvälisen Jääkiekkoliiton (IIHF) antidopingsääntöjä.
+
+Kaikkia pelaajia, valmentajia ja toimitsijoita velvoitetaan tutustumaan heitä koskeviin antidopingsäännöstöihin.
+
+Tiedot urheilussa kielletyistä dopingaineista ja -menetelmistä: www.suek.fi`
+        },
+        {
+          id: "2.3",
+          title: "Taloushallinto, verotus ja vakuutukset",
+          content: `SJL:n kilpailutoimintaan osallistuva seura sitoutuu hoitamaan taloushallintonsa säädösten ja annettujen ohjeiden mukaisesti.
+
+Seuraa / joukkuetta, joka suunnitelmallisesti jättää hoitamatta verotukseen tai lakisääteisiin vakuutuksiin liittyvät velvoitteensa, rangaistaan pääsääntöisesti sulkemalla kilpailutoiminnasta vähintään yhdeksi kilpailukaudeksi.
+
+Seurajohdon vastuuhenkilöt (pj, tj, hallitus) asetetaan SJL:n kurinpitosäännön määräämään toimintakieltoon.`
+        },
+        {
+          id: "2.4",
+          title: "Sosiaaliturva",
+          content: `Jos pelaaja saa urheilemisesta veronalaista palkkiota vähintään laissa säädetyn määrän, on seuran järjestettävä hänelle eläke- ja tapaturmaturva.
+
+Mikäli seura ei ole järjestänyt pelaajalle vakuutus- tai eläketurvaa, seurajohdon vastuuhenkilöt asetetaan toimintakieltoon.`
+        },
+        {
+          id: "2.5",
+          title: "Seuran konkurssi",
+          content: `Mikäli seura asetetaan konkurssiin ja se luopuu sarjapaikastaan, pelaajat ovat pääsääntöisesti vapaita siirtymään muihin seuroihin.
+
+Konkurssipesän voidaan tarvittaessa sallia hoitaa kilpailutoiminta kauden loppuun.
+
+Uusi seura voi SJL:n päätöksellä jatkaa entisen seuran paikalla samalla sarjatasolla saman kauden aikana vain sillä ehdolla, että se hoitaa entisen seuran urheilutoimintaan liittyvät kaikki kiistattomat taloudelliset vastuut.`
+        },
+        {
+          id: "2.6",
+          title: "Vedonlyönti",
+          content: `Urheilutoimija ei saa itse tai edustajansa kautta lyödä vetoa tai muilla tavoin osallistua vedonlyöntiin oman sarjatasonsa tai yhteistyöseuransa sarjatason kilpailutapahtumista.
+
+Urheilutoimijaksi katsotaan: pelaajat, valmentajat, huoltajat, seurajohtoon kuuluvat henkilöt, seuran lääkintähenkilöstö ja muut joukkueen kanssa kiinteästi tekemisissä olevat henkilöt.
+
+Erotuomari ei saa lyödä vetoa niiden sarjatasojen kohteista, joissa hän itse toimii.
+
+Rikkomuksesta seuraa pääsääntöisesti vähintään yhden kilpailukauden peli- ja toimintakielto.`
+        },
+        {
+          id: "2.7",
+          title: "Kilpailumanipulaatio",
+          content: `Urheilutoiminnan eettinen lähtökohta on, että urheilijat, toimihenkilöt, joukkueet, seurat ja erotuomarit pyrkivät kilpailutilanteessa parhaaseen mahdolliseen suoritukseen.
+
+Seura, jonka joukkueen kilpailutapahtuman tuloksesta on sovittu etukäteen, menettää kilpailuoikeutensa pääsääntöisesti vähintään kahdeksi kaudeksi.
+
+Pelaaja, toimihenkilö tai erotuomari, joka manipuloi ottelutapahtumia, asetetaan kilpailu- ja toimintakieltoon pääsääntöisesti vähintään kahdeksi kilpailukaudeksi.`
+        },
+        {
+          id: "2.8",
+          title: "Kasvattajakorvaus",
+          content: `Kasvattajakorvaus on seuroille tulevaa korvausta kasvatustyön kuluista sellaisesta pelaajasta, joka pelaa SM-Liigassa/CHL:ssä määrätyn määrän otteluita.
+
+Kasvattajakorvausta maksetaan jokaisesta ottelusta (6-90 ottelua) kun pelaaja on pelipäivänä alle 23-vuotias.
+
+Korvaus 6-30 ottelua: 150 euroa / ottelu
+Korvaus 31-60 ottelua: 300 euroa / ottelu
+Korvaus 61-90 ottelua: 450 euroa / ottelu
+
+MM-kisajoukkueisiin kuuluminen ja NHL-varaus kerryttävät lisäkorvausta.`
+        }
+      ]
+    },
+    {
+      id: "3",
+      title: "PELAAJAT JA TOIMIHENKILÖT",
+      intro: "Pelaajien ja toimihenkilöiden rekisteröinti, vakuutukset ja sopimukset.",
+      rules: [
+        {
+          id: "3.1",
+          title: "Pelipassit ja rekisteröinnit",
+          content: `SJL:n ja sen jäsenseuran järjestämässä toiminnassa mukana olevilla pelaajilla ja joukkueen toimihenkilöillä on oltava voimassa oleva pelipassi tai SJL:n määrittelemä rekisteröinti tehtynä.
+
+Pelaajan pelipassi on voimassa, kun maksu on oikein maksettu ja tieto on kirjautunut SJL:n sähköiseen edustusoikeusjärjestelmään.
+
+Ottelutapahtumassa joukkueen pelaaja-aitiossa toimivilla toimihenkilöillä (valmentajat, huoltajat, joukkueenjohtajat, lääkärit) on oltava voimassa oleva rekisteröinti.
+
+Pelaaja-aitiossa olevien toimihenkilöiden tulee olla 15-vuotta täyttäneitä.`
+        },
+        {
+          id: "3.2",
+          title: "Vakuutus",
+          content: `Mestiksessä, Suomi-sarjassa sekä naisten, nuorten- ja juniorien sarjoissa pelaajalla pitää olla voimassa oleva kilpaurheilun kattava vakuutus.
+
+SJL edellyttää, että kaikki pelaajat kaikissa sarjoissa vastaavat omasta jääkiekon pelaamisen kattavasta vakuutusturvastaan.`
+        },
+        {
+          id: "3.3",
+          title: "Pelaajasopimukset",
+          content: `Pelaajan velvollisuudet:
+Pelaaja on velvollinen noudattamaan seuran/joukkueen pelisääntöjä ja yhdessä sovittuja taloudellisia velvoitteita. Alle 18-vuotiaan kohdalla vastuu on pelaajan lisäksi myös huoltajalla.
+
+Pelaaja-agentin käyttäminen:
+15-vuotias pelaaja saa käyttää rekisteröidyn pelaaja-agentin apua pelaajasopimusta tehdessä. Alle 15-vuotias ei saa tehdä toimeksiantoa agentin kanssa.
+
+Pelaajasopimus:
+Seura voi tehdä alle 15-vuotiaan pelaajan kanssa enintään yhden pelikauden mittaisen kirjallisen sopimuksen.`
+        }
+      ]
+    },
+    {
+      id: "4",
+      title: "EROTUOMARIT, OTTELUVALVOJAT JA TOIMITSIJAT",
+      intro: "Erotuomarien, toimitsijoiden ja otteluvalvojien pätevyys ja tehtävät.",
+      rules: [
+        {
+          id: "4.1",
+          title: "Viralliset erotuomarit",
+          content: `Virallisissa otteluissa voivat erotuomareina toimia vain SJL:n hyväksymät erotuomarit, joilla on voimassa oleva SJL:n erotuomarikortti sekä SJL:n pelipassi tai rekisteröinti tehtynä.
+
+Erotuomarikortin myöntäminen edellyttää, että henkilö on taidoiltaan ja ominaisuuksiltaan kykenevä toimimaan erotuomaritehtävissä.
+
+Henkilön tulee osallistua aktiivisesti toimintaan ja olla käytettävissä tehtäviin.
+
+Seuratuomari toimii tuomarina virallisissa sarjaotteluissa SJL:n määrittelemissä sarjoissa. Pelaajan on käytävä seuratuomarikurssi viimeistään U15 iässä.`
+        },
+        {
+          id: "4.2",
+          title: "Erotuomarien nimeäminen",
+          content: `Erotuomari- ja toimitsijatehtävien nimeämisestä päättää SJL.
+
+Mestiksen, U20 SM-sarjan, Suomi-sarjan ja Auroraliigan erotuomarien nimeämisestä vastaa SJL:n erotuomaripäällikkö.
+
+Alueiden erotuomarikouluttajat vastaavat miesten II divisioonan, U20 Mestiksen ja U18-U16 SM-sarjojen erotuomarien nimeämisestä.`
+        },
+        {
+          id: "4.3",
+          title: "Jääviys erotuomaritoiminnassa",
+          content: `Mestiksessä, Suomi-sarjassa, U20 SM-sarjassa tai U20 Mestiksessä pelaava pelaaja tai joukkueenjohtaja-, valmentaja- tai huoltajatehtävissä toimiva henkilö ei saa toimia erotuomarina samassa sarjassa.
+
+Erotuomarina ottelussa toimiva henkilö ei saa olla nimettynä samassa ottelussa mihinkään tehtävään pelaavissa joukkueissa.`
+        },
+        {
+          id: "4.4",
+          title: "Erotuomariraportit",
+          content: `Sääntöjen vaatimat erotuomarien raportit on oltava sarjan kurinpitäjän käsiteltävänä ottelua seuraavana arkipäivänä.
+
+Mestiksessä, Auroraliigassa ja U20 SM-sarjassa raportit tulee olla toimitettuna seuraavana päivänä klo 10.00:een mennessä (myös viikonloppuisin).`
+        },
+        {
+          id: "4.5",
+          title: "Erotuomarikustannukset",
+          content: "SJL tai järjestävä seura SJL:n ja SJTL:n välisen sopimuksen mukaisesti maksaa sarjaotteluiden erotuomarikustannukset."
+        }
+      ]
+    },
+    {
+      id: "5",
+      title: "EDUSTUSOIKEUS",
+      intro: "Pelaajien edustusoikeudet ja -velvollisuudet eri sarjoissa ja ikäluokissa.",
+      rules: [
+        {
+          id: "5.1",
+          title: "Edustusoikeus ja -velvollisuus",
+          content: `Maajoukkue:
+Maajoukkueeseen nimetty pelaaja on velvollinen noudattamaan kutsua, eikä hän saa ilman eri lupaa osallistua samaan aikaan pelattavaan muuhun otteluun.
+
+Sarjaottelut:
+Pelaajan edustusoikeus voi olla vain SJL:n jäsenseurassa. Pelaajan edustusoikeus alkaa siinä jäsenseurassa, jossa pelaaja ensimmäisen kerran rekisteröidään sarjakokoonpanoon.
+
+Pelaajan on suoritettava seuratuomarikurssi viimeistään U15 iässä.
+
+Miesten Mestiksessä, Suomi-sarjassa, U20 SM-sarjassa sekä Auroraliigassa pelaajien on suoritettava SUEK:n Puhtaasti Paras- ja Reilusti Paras -verkkokurssit.`
+        },
+        {
+          id: "5.2",
+          title: "Ikärajat kaudella 2025-2026",
+          content: `U20: 2006
+U19: 2007
+U18: 2008
+U17: 2009
+U16: 2010
+U15: 2011
+U14: 2012
+U13: 2013
+U12: 2014
+U11: 2015
+U10: 2016
+U9: 2017`
+        },
+        {
+          id: "5.3",
+          title: "Seurayhteisö",
+          content: `Seurayhteisön muodostaa edustus- ja junioriseura, joiden toiminta on eriytetty.
+
+Seurayhteisössä voi olla rinnakkaisjoukkueet eri ikäluokissa. Junioriseuran pelaajat voivat edustaa seurayhteisössä myös yhtä aikuisten joukkuetta sarjatasoa kohti.
+
+Seurayhteisön tunnusmerkki on pelaaminen samalla tai samansuuntaisella nimellä.`
+        },
+        {
+          id: "5.4",
+          title: "Pelaaminen eri joukkueissa",
+          content: `Aikuisten kenttäpelaajan siirtyessä toiseen aikuisten joukkueeseen saman seuran sisällä, on joukkueen pelattava siirtymisen jälkeiset kaksi (2) seuraavaa sarjaottelua ennen kuin kenttäpelaaja voi pelata toisessa joukkueessa.
+
+Kenttäpelaajan siirtyessä ylemmän sarjan joukkueeseen, voi siirtyä takaisin alemman sarjan joukkueeseen ilman kahden ottelun pelaamista.
+
+Samana päivänä ei voi siirtyä toiseen joukkueeseen vaan vasta joukkueen peliä seuraavana päivänä.
+
+Pelaajan tulee pääasiassa pelata siinä joukkueessa, jonka kokoonpanoon kuuluu kauden alussa.`
+        },
+        {
+          id: "5.5",
+          title: "Yhteistyöseurasopimus",
+          content: `Kaksi eri seurayhteisöä, joiden miesten edustusjoukkueet pelaavat eri sarjatasolla, voivat tehdä keskenään yhteistyöseurasopimuksen.
+
+Sopimus koskee pelaajien siirtymistä seurojen miesten kilpasarjojen sekä U20 sarjojen joukkueiden välillä.
+
+Yhteistyöseurasopimus anotaan SJL:n kilpailuvaliokunnalta ja tehdään pelikaudeksi kerrallaan. Hyväksyttävä 15.8. mennessä.
+
+Pelaajien siirtyminen yhteistyöseurasopimuksen puitteissa loppuu 15.2.`
+        },
+        {
+          id: "5.6",
+          title: "Yhteisseura- ja yhteisjoukkuesäännöt",
+          content: `Yhteisseurasäännöt:
+Kaksi tai useampi eri seuraa, joilla on pelaajamäärän vähyyden vuoksi vaikea muodostaa omia joukkueita, voi anoa kilpailuvaliokunnalta yhteisseurastatusta ennen 2.5.
+
+Yhteisjoukkuesäännöt:
+Kaksi tai useampi eri seura voi anoa jonkun ikäluokan yhteisjoukkueelle yhteisjoukkuestatusta pelaajamäärän vähyyden vuoksi.`
+        },
+        {
+          id: "5.7",
+          title: "Kaksoisedustus",
+          content: `Naiset ja tytöt:
+Jos naispuolisen pelaajan edustusoikeus on seurassa, jossa ei ole naisten sarjassa pelaavaa joukkuetta, voi saada kaksoisedustuksen yhteen muuhun SJL:n jäsenseuraan.
+
+Pojat:
+Pelaaja, joka pelaa yli-ikäisenä U16 tai vanhemmissa eikä omassa seurassa ole muuta joukkuetta, voi saada kaksoisedustuksen miesten joukkueeseen.`
+        }
+      ]
+    },
+    {
+      id: "6",
+      title: "SEURASIIRROT",
+      intro: "Pelaajien seurasiirtojen säännöt ja aikarajat.",
+      rules: [
+        {
+          id: "6.1",
+          title: "Seurasiirrot Suomessa",
+          content: `Pelaajan edustusoikeutta siirretään siirtomenettelyssä U9 ikäluokassa pelaamisesta alkaen.
+
+Pelaajan edustusoikeus siirtyy uuteen seuraan ainoastaan SJL:n hyväksymän seurasiirtomenettelyn kautta.
+
+Seurasiirto on tehtävä aina, vaikka edustusoikeuden omaava seura olisi lopettanut toimintansa.
+
+1.7. jälkeen pelaaja voi vaihtaa seuraa ainoastaan seurojen suostumuksella.`
+        },
+        {
+          id: "6.2",
+          title: "Määräaikainen edustusoikeuden siirto",
+          content: `Määräaikainen siirto voidaan tehdä aikarajojen puitteissa (15.2. saakka) kauden aikana.
+
+Siirtomuodot:
+• Lyhytaikainen lainasiirto, max. 7 vrk
+• Rajoitettu seurasiirto, max. 15.2. saakka
+• Yhteistyöseurasopimussiirto, max 15.2. saakka
+
+Määräaikaisen siirron päättymispäivän jälkeisenä päivänä edustusoikeus palautuu automaattisesti vanhalle seuralle.`
+        },
+        {
+          id: "6.3",
+          title: "Seurasiirtojen aikarajat",
+          content: `U18 ja nuoremmat pojat:
+
+• 1.5. – 30.6. vapaa siirtoaika
+• 1.7. – 31.7. ei siirtoaikaa
+• 1.8. – 31.8. molempien seurojen suostumuksella
+• 1.9. – 31.10. vain ne, jotka eivät ole edustaneet kuluvalla kaudella
+• 1.11. – 30.11. molempien seurojen suostumuksella
+• 30.11. siirtoaika päättyy U15- ja nuoremmilla
+• 1.12. – 15.2. U18-U16 ikäisillä molempien seurojen suostumuksella
+
+U19 ja vanhemmat sekä naiset/tytöt:
+
+• 1.5. – 30.6. vapaa siirtoaika
+• 1.7. – 31.7. ei siirtoaikaa
+• 1.8. – 15.2. molempien seurojen suostumuksella`
+        },
+        {
+          id: "6.4",
+          title: "Aikarajat pelaamiselle",
+          content: "Pelaaja voi edustaa uutta seuraansa, kun pelaajasiirto on vahvistettu SJL:n edustusoikeusrekisterissä edellyttäen, että siirto on kilpailusääntöjen mukainen."
+        },
+        {
+          id: "6.5",
+          title: "Ryhmäsiirrot",
+          content: `Ryhmäsiirto voidaan myöntää, kun lähtöseura omalla päätöksellään lopettaa toimintansa tai lähtöseuran joku ikäluokka kokonaisuudessaan lopettaa toimintansa.
+
+Jos kaikkien seuran U16- ja vanhempien ikäluokkien pelaajat siirtyvät toiseen seuraan, voi ryhmä siirtoa anoa.`
+        },
+        {
+          id: "6.6",
+          title: "Ulkomaiset pelaajasiirrot",
+          content: `Ulkomaisissa pelaajasiirroissa noudatetaan SJL:n ja IIHF:n sääntöjä ja aikarajoja.
+
+U15 ja nuorempien osalta siirtoaika päättyy 30.11. paitsi jos pelaaja muuttaa Suomeen pysyvästi huoltajansa mukana.
+
+Alle 18-v. pelaaja voi siirtyä Suomeen pysyvällä siirrolla ainoastaan, jos pelaaja muuttaa huoltajan kanssa pysyvästi Suomeen.`
+        }
+      ]
+    },
+    {
+      id: "7",
+      title: "SARJAT",
+      intro: "Sarjamuodot, osanotto, pisteet ja sarjojen tärkeysjärjestys.",
+      rules: [
+        {
+          id: "7.1",
+          title: "Seuraa koskevat velvoitteet",
+          content: `SJL:n jäsenseura tai sen joukkue ei saa järjestää kilpailevaa sarjatoimintaa SJL:n järjestämän sarjatoiminnan kanssa.
+
+SJL:n jäsenseuran joukkue ei saa osallistua ilman SJL:n lupaa kenenkään muun tahon järjestämään sarjaan.`
+        },
+        {
+          id: "7.2",
+          title: "Sarjamuodot",
+          content: `SJL:n liittohallitus päättää Mestiksen sarjamuodon.
+
+Miesten Suomi-Sarjan, U20 SM-sarjan, U18 SM-sarjan, U16 SM-sarjan sekä Auroraliigan sarjamuodon päättää SJL:n liittohallitus.
+
+Muiden sarjojen sarjamuodon päättää SJL:n kilpailuvaliokunta.`
+        },
+        {
+          id: "7.3",
+          title: "Suomen mestaruus",
+          content: `Jääkiekkoilun Suomen mestaruuden voi voittaa vain Suomen SJL ry:n jäsenseura kyseisen seuran joukkueen voittamalla kunakin vuonna SM-arvon saavan sarjan.
+
+SM-mitalin saa pelaaja, joka on pelannut vähintään 1/3 koko kauden sarjaotteluista tai on pelannut pudotuspeleissä yhdenkin ottelun.`
+        },
+        {
+          id: "7.4",
+          title: "Osanotto ja luovuttaminen",
+          content: `Ilmoittautuminen:
+Osanottomaksun eri sarjoihin määrittää SJL:n liittohallitus.
+
+Valtakunnallisissa sarjoissa ei joukkue saa luovuttaa yhtään ottelua. Luovuttanut joukkue suljetaan sarjasta ja velvoitetaan korvaamaan vastustajalle aiheuttamansa taloudelliset menetykset.
+
+Miesten sarjoissa kesken sarjan luovuttanutta joukkuetta ei voida hyväksyä ko. sarjatasolle seuraavaksi kaudeksi.`
+        },
+        {
+          id: "7.5",
+          title: "Sarjojen tärkeysjärjestys",
+          content: `1. kategoria: Maaottelut ja liigaottelut
+2. kategoria: Auroraliiga, Mestis ja U20 SM-sarja
+3. kategoria: Suomi-sarja, U20 Mestis ja U18 SM-sarja
+4. kategoria: Naisten Mestis, miesten II divisioona, U16 SM-sarja
+5. kategoria: Naisten Suomi-Sarja, U16-U20 Suomi-sarjat
+6. kategoria: U15- sarjat ja nuorempien sarjat
+7. kategoria: muut sarjat`
+        },
+        {
+          id: "7.6",
+          title: "Pisteet ja järjestys",
+          content: `Ilman jatkoaikaa:
+Voittanut joukkue saa 2 pistettä, hävinnyt 0 pistettä. Tasapeli: kumpikin saa 1 pisteen.
+
+Jatkoajalla:
+Varsinaisella peliajalla voitto = 3 pistettä. Jatkoajalla/voittomaalikilpailussa voittava joukkue saa lisäpisteen.
+
+Tasapistetilanteessa ratkaisee:
+1. Maaliero
+2. Tehtyjen maalien lukumäärä
+3. Keskinäisten otteluiden tulos
+4. Vähemmän rangaistusminuutteja`
+        },
+        {
+          id: "7.7",
+          title: "Lääkäri ja ensiapu",
+          content: `Mestiksen ja U20 SM-sarjan otteluissa on lääkärin läsnäolo pakollinen.
+
+Muissa sarjoissa on lääkärin tai ensiapukoulutuksen saaneen henkilön läsnäolo pakollinen pelaajapenkillä tai sen välittömässä läheisyydessä.
+
+Ottelussa pelaava pelaaja ei voi olla samanaikaisesti ensiapuhenkilö.`
+        },
+        {
+          id: "7.8",
+          title: "Mediaoikeudet",
+          content: `SJL:n järjestämien kaikkien sarjojen ja otteluiden mediaoikeudet kuuluvat kokonaisuudessaan liitolle.
+
+Seura tarvitsee aina luvan liitolta liikkuvan kuvan lähettämiseen kotiotteluistaan.
+
+Miesten Suomi-sarjan, U20 SM-sarjan, U18 ja U16 SM-sarjatasojen kaikki ottelut on kuvattava.`
+        }
+      ]
+    },
+    {
+      id: "8",
+      title: "OTTELUT",
+      intro: "Otteluiden järjestäminen, luvat ja käytännöt.",
+      rules: [
+        {
+          id: "8.1",
+          title: "Ottelut",
+          content: `Ottelut ovat joko SJL:n virallisia sarjaotteluita tai harjoitusotteluita.
+
+Tärkeysjärjestys:
+1. Maaottelut
+2. Liigaottelut
+3. SJL:n ottelut
+4. Seuran järjestämät ottelut`
+        },
+        {
+          id: "8.2",
+          title: "Harjoitusottelut ja turnaukset",
+          content: `Turnaus on harjoitusottelutapahtuma, johon osallistuu useampi kuin kolme eri seurojen joukkuetta ja joka pelataan samalla tai vierekkäisillä kentillä.
+
+Kaikkiin turnauksiin on anottava turnauslupa paikalliselta SJL:n Alueelta.
+
+Turnauslupia ei myönnetä sarjatoiminnan aikana pois lukien talvilomat helmi-maaliskuussa.`
+        },
+        {
+          id: "8.3",
+          title: "Kansainväliset otteluluvat",
+          content: `SJL:n jäsenseuran, joka haluaa pelata ottelun ulkomailla tai kotimaassa ulkomaisen seuran kanssa, on haettava liitolta ottelulupaa viimeistään 14 vrk ennen ottelua.
+
+Kansainvälinen ottelulupa on toimitettava paikalliselle erotuomarikerholle ennen kuin erotuomarit voidaan nimetä.`
+        },
+        {
+          id: "8.4",
+          title: "Ottelun järjestäminen",
+          content: `Järjestävä seura vastaa ottelun järjestämiseen liittyvistä kaikista toimenpiteistä ja varmistuu tarvittavien vakuutusten voimassaolosta.
+
+Järjestyksenpito:
+Järjestävä seura on vastuussa siitä, että ottelussa noudatetaan SJL:n turvallisuusmääräyksiä.
+
+Tupakan ja alkoholin käyttö pelaajille ja toimitsijoille tarkoitetuissa tiloissa on kielletty.`
+        },
+        {
+          id: "8.5",
+          title: "Ottelun alkamisaika",
+          content: `Nuorten ja juniorisarjojen matkaottelut on aloitettava perjantaita ja lauantaita lukuun ottamatta viimeistään klo 20.00.
+
+Alkamisaika on määriteltävä siten, että vierasjoukkue ehtii otteluun saman vuorokauden aikana.
+
+U20 SM-sarjan pudotuspelien alkamisaika on oltava klo 12.00 – 20.00 välillä.`
+        }
+      ]
+    }
+  ]
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// GLOBAL STATE
+// ═══════════════════════════════════════════════════════════════════════════
+
+let currentView = 'home';
+let currentSectionId = null;
+let favorites = [];
+
+// ═══════════════════════════════════════════════════════════════════════════
+// INITIALIZATION
+// ═══════════════════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Load favorites
+  favorites = JSON.parse(localStorage.getItem('sjl_ks_favorites') || '[]');
+  
+  // Build sidebar navigation
+  buildSidebar();
+  
+  // Build home view
+  buildHome();
+  
+  // Setup menu toggle
+  document.getElementById('menu-toggle').addEventListener('click', toggleSidebar);
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SIDEBAR
+// ═══════════════════════════════════════════════════════════════════════════
+
+function buildSidebar() {
+  const nav = document.getElementById('sidebar-nav');
+  let html = '';
+  
+  DB.sections.forEach(section => {
+    html += `
+      <div class="nav-section" id="nav-section-${section.id}">
+        <div class="nav-section-header" onclick="toggleNavSection('${section.id}')">
+          <span class="nav-section-num">${section.id}</span>
+          <span class="nav-section-title">${section.title}</span>
+          <span class="nav-section-chevron">▼</span>
+        </div>
+        <div class="nav-rules">
+          ${section.rules.map(rule => `
+            <div class="nav-rule" id="nav-rule-${rule.id.replace('.','_')}" onclick="openSection('${section.id}', '${rule.id}')">
+              <span class="nav-rule-num">${rule.id}</span>
+              <span class="nav-rule-title">${rule.title}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  });
+  
+  nav.innerHTML = html;
+}
+
+function toggleNavSection(id) {
+  const el = document.getElementById('nav-section-' + id);
+  if (el) el.classList.toggle('expanded');
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  const toggle = document.getElementById('menu-toggle');
+  
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('active');
+  toggle.classList.toggle('open');
+}
+
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('active');
+  document.getElementById('menu-toggle').classList.remove('open');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// HOME VIEW
+// ═══════════════════════════════════════════════════════════════════════════
+
+function buildHome() {
+  const container = document.getElementById('home-sections');
+  
+  const icons = [
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="4" stroke="white" stroke-width="2"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="11" r="3" stroke="white" stroke-width="2"/></svg>',
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="white" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="2" x2="8" y2="6" stroke="white" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="10" x2="21" y2="10" stroke="white" stroke-width="2"/></svg>',
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="white" stroke-width="2"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/><path d="M12 6v6l4 2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="white" stroke-width="2"/><path d="M9 3v18M21 9H3" stroke="white" stroke-width="2"/></svg>'
+  ];
+  
+  let html = '';
+  DB.sections.forEach((section, idx) => {
+    html += `
+      <div class="home-section-card" onclick="openSection('${section.id}')">
+        <div class="home-section-icon">${icons[idx] || section.id}</div>
+        <div class="home-section-info">
+          <div class="home-section-name">${section.title}</div>
+          <div class="home-section-meta">${section.rules.length} sääntöä</div>
+        </div>
+        <div class="home-section-arrow">›</div>
+      </div>
+    `;
+  });
+  
+  container.innerHTML = html;
+  
+  // Render favorites
+  renderFavorites();
+}
+
+function renderFavorites() {
+  const favSection = document.getElementById('fav-section');
+  const favItems = document.getElementById('fav-items');
+  
+  if (favorites.length === 0) {
+    favSection.classList.remove('has-items');
+    return;
+  }
+  
+  favSection.classList.add('has-items');
+  
+  let html = '';
+  favorites.forEach(favId => {
+    const [sectionId, ruleId] = favId.split(':');
+    const section = DB.sections.find(s => s.id === sectionId);
+    if (!section) return;
+    const rule = section.rules.find(r => r.id === ruleId);
+    if (!rule) return;
+    
+    html += `
+      <div class="home-section-card" onclick="openSection('${sectionId}', '${ruleId}')" style="padding:10px 14px;">
+        <div class="home-section-icon" style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#D4A843 0%,#b8912e 100%);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 17l-6.5 4 2-7.5L2 9h7L12 2z" fill="white"/></svg>
+        </div>
+        <div class="home-section-info">
+          <div class="home-section-name" style="font-size:0.8rem;">${rule.title}</div>
+          <div class="home-section-meta">${ruleId}</div>
+        </div>
+        <button class="fav-star-btn active" onclick="toggleFavorite('${favId}',event)">
+          <svg class="star-filled" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 17l-6.5 4 2-7.5L2 9h7L12 2z" fill="#D4A843" stroke="#D4A843" stroke-width="1.5"/></svg>
+          <svg class="star-outline" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 17l-6.5 4 2-7.5L2 9h7L12 2z" stroke="#b8cce0" stroke-width="1.5" fill="none"/></svg>
+        </button>
+      </div>
+    `;
+  });
+  
+  favItems.innerHTML = html;
+}
+
+function toggleFavorite(favId, ev) {
+  if (ev) { ev.stopPropagation(); ev.preventDefault(); }
+  const idx = favorites.indexOf(favId);
+  if (idx >= 0) {
+    favorites.splice(idx, 1);
+  } else {
+    favorites.push(favId);
+  }
+  localStorage.setItem('sjl_ks_favorites', JSON.stringify(favorites));
+  renderFavorites();
+  // Update star buttons
+  document.querySelectorAll('.fav-star-btn').forEach(btn => {
+    btn.classList.toggle('active', favorites.includes(btn.dataset?.fav));
+  });
+}
+
+function favStarHTML(favId) {
+  const isActive = favorites.includes(favId);
+  return `<button class="fav-star-btn ${isActive ? 'active' : ''}" data-fav="${favId}" onclick="toggleFavorite('${favId}',event)">
+    <svg class="star-filled" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 17l-6.5 4 2-7.5L2 9h7L12 2z" fill="#D4A843" stroke="#D4A843" stroke-width="1.5"/></svg>
+    <svg class="star-outline" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 17l-6.5 4 2-7.5L2 9h7L12 2z" stroke="#b8cce0" stroke-width="1.5" fill="none"/></svg>
+  </button>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SECTION VIEW
+// ═══════════════════════════════════════════════════════════════════════════
+
+function openSection(sectionId, scrollToRuleId = null) {
+  currentSectionId = sectionId;
+  const section = DB.sections.find(s => s.id === sectionId);
+  if (!section) return;
+  
+  // Update header
+  document.getElementById('section-badge').textContent = 'OSA ' + section.id;
+  document.getElementById('section-title').textContent = section.title;
+  
+  // Prev/Next buttons
+  const idx = DB.sections.findIndex(s => s.id === sectionId);
+  const prevBtn = document.getElementById('prev-section-btn');
+  const nextBtn = document.getElementById('next-section-btn');
+  
+  if (idx > 0) {
+    const prev = DB.sections[idx - 1];
+    prevBtn.disabled = false;
+    prevBtn.onclick = () => openSection(prev.id);
+    prevBtn.textContent = '← ' + prev.title.substring(0, 20) + (prev.title.length > 20 ? '…' : '');
+  } else {
+    prevBtn.disabled = true;
+    prevBtn.textContent = '← Edellinen';
+  }
+  
+  if (idx < DB.sections.length - 1) {
+    const next = DB.sections[idx + 1];
+    nextBtn.disabled = false;
+    nextBtn.onclick = () => openSection(next.id);
+    nextBtn.textContent = next.title.substring(0, 20) + (next.title.length > 20 ? '…' : '') + ' →';
+  } else {
+    nextBtn.disabled = true;
+    nextBtn.textContent = 'Seuraava →';
+  }
+  
+  // Build rules
+  let html = '';
+  if (section.intro) {
+    html += `<p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:16px;line-height:1.6;">${escHtml(section.intro)}</p>`;
+  }
+  
+  section.rules.forEach(rule => {
+    const favId = section.id + ':' + rule.id;
+    html += `
+      <div class="rule-card" id="rule-${rule.id.replace('.','_')}">
+        <div class="rule-header" onclick="toggleRule('${rule.id.replace('.','_')}')">
+          <span class="rule-id">${rule.id}</span>
+          <span class="rule-title">${rule.title}</span>
+          ${favStarHTML(favId)}
+          <span class="rule-chevron">▼</span>
+        </div>
+        <div class="rule-content">${escHtml(rule.content)}</div>
+      </div>
+    `;
+  });
+  
+  document.getElementById('section-body').innerHTML = html;
+  
+  // Update nav
+  document.querySelectorAll('.nav-rule.active').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-section').forEach(el => el.classList.remove('expanded'));
+  const navSection = document.getElementById('nav-section-' + sectionId);
+  if (navSection) navSection.classList.add('expanded');
+  
+  // Show view
+  setView('section');
+  window.scrollTo(0, 0);
+  
+  // Close sidebar on mobile
+  if (window.innerWidth < 768) closeSidebar();
+  
+  // Scroll to specific rule if requested
+  if (scrollToRuleId) {
+    setTimeout(() => {
+      const ruleEl = document.getElementById('rule-' + scrollToRuleId.replace('.','_'));
+      if (ruleEl) {
+        ruleEl.classList.add('expanded');
+        ruleEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  }
+}
+
+function toggleRule(id) {
+  const el = document.getElementById('rule-' + id);
+  if (el) el.classList.toggle('expanded');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SEARCH
+// ═══════════════════════════════════════════════════════════════════════════
+
+function showSearch() {
+  setView('search');
+  setTimeout(() => document.getElementById('search-input').focus(), 100);
+}
+
+function performSearch(query) {
+  const results = document.getElementById('search-results');
+  const info = document.getElementById('search-info');
+  
+  if (!query || query.length < 2) {
+    results.innerHTML = '<div class="search-empty"><div class="search-empty-icon">🔍</div>Kirjoita hakusana (vähintään 2 merkkiä)</div>';
+    info.textContent = '';
+    return;
+  }
+  
+  const q = query.toLowerCase().trim();
+  const matches = [];
+  
+  DB.sections.forEach(section => {
+    section.rules.forEach(rule => {
+      let score = 0;
+      let snippet = '';
+      
+      // ID match
+      if (rule.id.toLowerCase() === q || rule.id.toLowerCase().startsWith(q)) {
+        score += 100;
+      }
+      
+      // Title match
+      if (rule.title.toLowerCase().includes(q)) {
+        score += 50;
+        snippet = rule.title;
+      }
+      
+      // Content match
+      if (rule.content.toLowerCase().includes(q)) {
+        score += 20;
+        if (!snippet) {
+          const idx = rule.content.toLowerCase().indexOf(q);
+          snippet = '...' + rule.content.substring(Math.max(0, idx - 40), idx + 100) + '...';
+        }
+      }
+      
+      if (score > 0) {
+        matches.push({ section, rule, score, snippet });
+      }
+    });
+  });
+  
+  matches.sort((a, b) => b.score - a.score);
+  const shown = matches.slice(0, 30);
+  
+  info.textContent = `${matches.length} tulosta haulle "${query}"`;
+  
+  if (shown.length === 0) {
+    results.innerHTML = '<div class="search-empty"><div class="search-empty-icon">😕</div>Ei tuloksia. Kokeile eri hakusanaa.</div>';
+    return;
+  }
+  
+  let html = '';
+  shown.forEach(m => {
+    const snip = highlightText(m.snippet, q);
+    html += `
+      <div class="search-result-item" onclick="openSection('${m.section.id}', '${m.rule.id}')">
+        <div class="search-result-rule">
+          <span class="search-result-badge">${m.rule.id}</span>
+          <span class="search-result-title">${highlightText(m.rule.title, q)}</span>
+        </div>
+        ${snip ? `<div class="search-result-snippet">${snip}</div>` : ''}
+      </div>
+    `;
+  });
+  
+  results.innerHTML = html;
+}
+
+function highlightText(text, query) {
+  if (!text || !query) return escHtml(text || '');
+  const escaped = escHtml(text);
+  const q = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return escaped.replace(new RegExp(q, 'gi'), m => `<mark class="search-highlight">${m}</mark>`);
+}
+
+// Home search
+let homeSearchTimeout = null;
+
+function doHomeSearch(val) {
+  const clearBtn = document.getElementById('home-search-clear');
+  clearBtn.style.display = val ? 'block' : 'none';
+  
+  clearTimeout(homeSearchTimeout);
+  homeSearchTimeout = setTimeout(() => performHomeSearch(val), 180);
+}
+
+function clearHomeSearch() {
+  const input = document.getElementById('home-search');
+  input.value = '';
+  input.focus();
+  document.getElementById('home-search-clear').style.display = 'none';
+  document.getElementById('home-search-panel').style.display = 'none';
+  document.getElementById('home-sections').style.display = '';
+  if (favorites.length > 0) {
+    document.getElementById('fav-section').style.display = 'block';
+  }
+}
+
+function performHomeSearch(query) {
+  const panel = document.getElementById('home-search-panel');
+  const sections = document.getElementById('home-sections');
+  const favSection = document.getElementById('fav-section');
+  
+  if (!query || query.length < 2) {
+    panel.style.display = 'none';
+    sections.style.display = '';
+    if (favorites.length > 0) favSection.style.display = 'block';
+    return;
+  }
+  
+  sections.style.display = 'none';
+  favSection.style.display = 'none';
+  panel.style.display = 'block';
+  
+  const q = query.toLowerCase().trim();
+  const matches = [];
+  
+  DB.sections.forEach(section => {
+    section.rules.forEach(rule => {
+      let score = 0;
+      let snippet = '';
+      
+      // ID match
+      if (rule.id.toLowerCase() === q || rule.id.toLowerCase().startsWith(q)) {
+        score += 100;
+      }
+      
+      // Title match
+      if (rule.title.toLowerCase().includes(q)) {
+        score += 50;
+        snippet = rule.title;
+      }
+      
+      // Content match
+      if (rule.content.toLowerCase().includes(q)) {
+        score += 20;
+        if (!snippet) {
+          const idx = rule.content.toLowerCase().indexOf(q);
+          snippet = '...' + rule.content.substring(Math.max(0, idx - 40), idx + 100) + '...';
+        }
+      }
+      
+      if (score > 0) {
+        matches.push({ section, rule, score, snippet });
+      }
+    });
+  });
+  
+  matches.sort((a, b) => b.score - a.score);
+  const shown = matches.slice(0, 30);
+  
+  if (shown.length === 0) {
+    panel.innerHTML = '<div class="search-empty"><div class="search-empty-icon">😕</div>Ei tuloksia. Kokeile eri hakusanaa.</div>';
+    return;
+  }
+  
+  let html = `<div class="search-results-info">${matches.length} tulosta haulle "${escHtml(query)}"</div>`;
+  shown.forEach(m => {
+    const snip = highlightText(m.snippet, q);
+    html += `
+      <div class="search-result-item" onclick="openSection('${m.section.id}', '${m.rule.id}')">
+        <div class="search-result-rule">
+          <span class="search-result-badge">${m.rule.id}</span>
+          <span class="search-result-title">${highlightText(m.rule.title, q)}</span>
+        </div>
+        ${snip ? `<div class="search-result-snippet">${snip}</div>` : ''}
+      </div>
+    `;
+  });
+  
+  panel.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// VIEW MANAGEMENT
+// ═══════════════════════════════════════════════════════════════════════════
+
+function setView(view) {
+  currentView = view;
+  document.getElementById('home-view').style.display = view === 'home' ? 'block' : 'none';
+  document.getElementById('section-view').style.display = view === 'section' ? 'block' : 'none';
+  document.getElementById('search-view').style.display = view === 'search' ? 'block' : 'none';
+}
+
+function showHome() {
+  setView('home');
+  window.scrollTo(0, 0);
+  clearHomeSearch();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// UTILITIES
+// ═══════════════════════════════════════════════════════════════════════════
+
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+</script>
+</body>
+</html>
