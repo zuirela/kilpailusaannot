@@ -446,6 +446,34 @@
   .fav-star-btn.active .star-outline { display: none; }
   .fav-star-btn.active .star-filled { display: block; }
 
+  /* ─── RESET ORDER ─── */
+  .reset-order-wrapper {
+    text-align: center;
+    padding: 16px 0 24px;
+  }
+  .reset-order-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,46,109,0.06);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .reset-order-btn:hover {
+    background: rgba(0,46,109,0.12);
+    border-color: var(--blue-light);
+    color: var(--blue);
+  }
+  .reset-order-btn svg {
+    color: inherit;
+  }
+
   /* ─── SECTION VIEW ─── */
   #section-view {
     display: none;
@@ -746,6 +774,13 @@
     </div>
 
     <div class="home-sections" id="home-sections"></div>
+
+    <div class="reset-order-wrapper" id="reset-order-wrapper" style="display:none;">
+      <button class="reset-order-btn" onclick="resetSectionOrder()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 3v5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Palauta oletusjärjestys
+      </button>
+    </div>
   </div>
 
   <!-- SECTION VIEW -->
@@ -788,7 +823,7 @@ const DB = {
   sections: [
     {
       id: "1",
-      title: "YLEISMÄÄRÄYKSET",
+      title: "1. YLEISMÄÄRÄYKSET",
       intro: "Nämä säännöt on hyväksytty SJL:n liittohallituksessa ja SJL:n liittovaltuustossa ja ovat voimassa kaudella 2025-2026.",
       rules: [
         {
@@ -816,7 +851,7 @@ SJL:n jäsenseurassa missä tahansa tehtävässä toimiva henkilö sitoutuu noud
     },
     {
       id: "2",
-      title: "EETTISET JA TALOUDELLISET MÄÄRÄYKSET",
+      title: "2. EETTISET JA TALOUDELLISET MÄÄRÄYKSET",
       intro: "Eettiset periaatteet ja taloudelliset velvoitteet SJL:n kilpailutoiminnassa.",
       rules: [
         {
@@ -909,7 +944,7 @@ MM-kisajoukkueisiin kuuluminen ja NHL-varaus kerryttävät lisäkorvausta.`
     },
     {
       id: "3",
-      title: "PELAAJAT JA TOIMIHENKILÖT",
+      title: "3. PELAAJAT JA TOIMIHENKILÖT",
       intro: "Pelaajien ja toimihenkilöiden rekisteröinti, vakuutukset ja sopimukset.",
       rules: [
         {
@@ -946,7 +981,7 @@ Seura voi tehdä alle 15-vuotiaan pelaajan kanssa enintään yhden pelikauden mi
     },
     {
       id: "4",
-      title: "EROTUOMARIT, OTTELUVALVOJAT JA TOIMITSIJAT",
+      title: "4. EROTUOMARIT, OTTELUVALVOJAT JA TOIMITSIJAT",
       intro: "Erotuomarien, toimitsijoiden ja otteluvalvojien pätevyys ja tehtävät.",
       rules: [
         {
@@ -992,7 +1027,7 @@ Mestiksessä, Auroraliigassa ja U20 SM-sarjassa raportit tulee olla toimitettuna
     },
     {
       id: "5",
-      title: "EDUSTUSOIKEUS",
+      title: "5. EDUSTUSOIKEUS",
       intro: "Pelaajien edustusoikeudet ja -velvollisuudet eri sarjoissa ja ikäluokissa.",
       rules: [
         {
@@ -1077,7 +1112,7 @@ Pelaaja, joka pelaa yli-ikäisenä U16 tai vanhemmissa eikä omassa seurassa ole
     },
     {
       id: "6",
-      title: "SEURASIIRROT",
+      title: "6. SEURASIIRROT",
       intro: "Pelaajien seurasiirtojen säännöt ja aikarajat.",
       rules: [
         {
@@ -1147,7 +1182,7 @@ Alle 18-v. pelaaja voi siirtyä Suomeen pysyvällä siirrolla ainoastaan, jos pe
     },
     {
       id: "7",
-      title: "SARJAT",
+      title: "7. SARJAT",
       intro: "Sarjamuodot, osanotto, pisteet ja sarjojen tärkeysjärjestys.",
       rules: [
         {
@@ -1231,7 +1266,7 @@ Miesten Suomi-sarjan, U20 SM-sarjan, U18 ja U16 SM-sarjatasojen kaikki ottelut o
     },
     {
       id: "8",
-      title: "OTTELUT",
+      title: "8. OTTELUT",
       intro: "Otteluiden järjestäminen, luvat ja käytännöt.",
       rules: [
         {
@@ -1368,7 +1403,26 @@ function closeSidebar() {
 // ═══════════════════════════════════════════════════════════════════════════
 
 // Section order
-let sectionOrder = JSON.parse(localStorage.getItem('sjl_ks_section_order') || 'null') || DB.sections.map(s => s.id);
+const DEFAULT_SECTION_ORDER = DB.sections.map(s => s.id);
+let sectionOrder = JSON.parse(localStorage.getItem('sjl_ks_section_order') || 'null') || [...DEFAULT_SECTION_ORDER];
+
+function isOrderChanged() {
+  return JSON.stringify(sectionOrder) !== JSON.stringify(DEFAULT_SECTION_ORDER);
+}
+
+function updateResetButtonVisibility() {
+  const wrapper = document.getElementById('reset-order-wrapper');
+  if (wrapper) {
+    wrapper.style.display = isOrderChanged() ? 'block' : 'none';
+  }
+}
+
+function resetSectionOrder() {
+  sectionOrder = [...DEFAULT_SECTION_ORDER];
+  localStorage.removeItem('sjl_ks_section_order');
+  buildHome();
+  updateResetButtonVisibility();
+}
 
 function buildHome() {
   const container = document.getElementById('home-sections');
@@ -1414,6 +1468,9 @@ function buildHome() {
   
   // Render favorites
   renderFavorites();
+  
+  // Update reset button visibility
+  updateResetButtonVisibility();
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
