@@ -62,6 +62,12 @@
     width: auto;
   }
   .header-logo span { color: #fff; }
+  .header-logo-img {
+    height: 36px;
+    width: auto;
+    margin-right: 8px;
+    border-radius: 2px;
+  }
   .header-season {
     font-size: 0.65rem;
     color: var(--ice-mid);
@@ -726,7 +732,8 @@
     <span></span><span></span><span></span>
   </button>
   <div class="header-logo">
-    <span>SJL Kilpailusäännöt</span>
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/7QB8UGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAASAAAAAEAAQBIAAAAAQABOEJJTQQEAAAAAABEHAIFAB5MRUlKT05BVC1NQUFKT1VLS1VFLVRVTk5VUy1QTVMcAjcACDIwMTgwODExHAI+AAgyMDE4MDgxMRwCAAACAAT/4QDuRXhpZgAATU0AKgAAAAgABgEaAAUAAAABAAAAVgEbAAUAAAABAAAAXgEoAAMAAAABAAIAAAExAAIAAAApAAAAZgITAAMAAAABAAEAAIdpAAQAAAABAAAAkAAAAAAAAABIAAAAAQAAAEgAAAABUGhvdG9zaGVsdGVyIGh0dHA6Ly93d3cucGhvdG9zaGVsdGVyLmNvbQAAAAWQAAAHAAAABDAyMzGQAwACAAAAFAAAANKRAQAHAAAABAECAwCgAAAHAAAABDAxMDCgAQADAAAAAf//AAAAAAAAMjAxODowODoxMSAxODoyNjoyMwD/4Q2vaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pgo8eDp4bXBtZXRhIHhtbG5zOng9J2Fkb2JlOm5zOm1ldGEvJyB4OnhtcHRrPSdJbWFnZTo6RXhpZlRvb2wgMTEuMTAnPgo8cmRmOlJERiB4bWxuczpyZGY9J2h0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMnPgoKIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PScnCiAgeG1sbnM6ZGM9J2h0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvJz4KICA8ZGM6ZGF0ZT4KICAgPHJkZjpTZXE+CiAgICA8cmRmOmxpPjIwMTgtMDgtMTFUMTg6MjY6MjM8L3JkZjpsaT4KICAgPC9yZGY6U2VxPgogIDwvZGM6ZGF0ZT4KICA8ZGM6dGl0bGU+CiAgIDxyZGY6QWx0PgogICAgPHJkZjpsaSB4bWw6bGFuZz0neC1kZWZhdWx0Jz5MRUlKT05BVC1NQUFKT1VLS1VFLVRVTk5VUy1QTVM8L3JkZjpsaT4KICAgPC9yZGY6QWx0PgogIDwvZGM6dGl0bGU+CiA8L3JkZjpEZXNjcmlwdGlvbj4KCiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0nJwogIHhtbG5zOmV4aWY9J2h0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvJz4KICA8ZXhpZjpEYXRlVGltZURpZ2l0aXplZD4yMDE4LTA4LTExVDE4OjI2OjIzPC9leGlmOkRhdGVUaW1lRGlnaXRpemVkPgogPC9yZGY6RGVzY3JpcHRpb24+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczpwaG90b3Nob3A9J2h0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8nPgogIDxwaG90b3Nob3A6RGF0ZUNyZWF0ZWQ+MjAxOC0wOC0xMVQxODoyNjoyMzwvcGhvdG9zaG9wOkRhdGVDcmVhdGVkPgogPC9yZGY6RGVzY3JpcHRpb24+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczp4bXA9J2h0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8nPgogIDx4bXA6Q3JlYXRlRGF0ZT4yMDE4LTA4LTExVDE4OjI2OjIzPC94bXA6Q3JlYXRlRGF0ZT4KIDwvcmRmOkRlc2NyaXB0aW9uPgo8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAo8P3hwYWNrZXQgZW5kPSd3Jz8+/9sAQwAFAwQEBAMFBAQEBQUFBgcMCAcHBwcPCwsJDBEPEhIRDxERExYcFxMUGhURERghGBodHR8fHxMXIiQiHiQcHh8e/9sAQwEFBQUHBgcOCAgOHhQRFB4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4e/8AAEQgAQgBQAwERAAIRAQMRAf/EABwAAAIDAQEBAQAAAAAAAAAAAAAHBQYIBAMBAf/EADQQAAICAQMDAgUBBwQDAAAAAAECAwQFAAYRBxIhEzEIIjJBURQVFiNCUnFyF0NTYiQlM//EABoBAAIDAQEAAAAAAAAAAAAAAAAEBQYHAQP/xAAzEQABAwMBBAkEAQUBAAAAAAABAAIDBBEhMRJBUXEFYYGRobHB4fATIjLR8RQjJDNCUv/aAAwDAQACEQMRAD8A2XoQo7cGcxGAoG9mcjXo1we0PM/Hc32VR7sx+wHJP41NkbpDZououcGi5Sn311+wuDZ4a1eKB+PlfKStC5/BWsivOR/msf8AfWhD0a9+vh+9PNLSVbW+/wAulPl/iQ3DftRQYp8rM9lxFAlKhBUSViQAFMvrux5IH2Pn7afZ0Wxou62OJJ8rJU1rjp881BYTqz1H3TkbNXCUsvakrQvPZaTOyxpXiT6nkZRGiKPyeNWvo4IhdxHd/Kg2okebNv3r5merXUTbJpTZatlIa9+EWKdmHPySw2I/6kdvURh5HI9x9xoZRQS32bY6v4Q6eRh+6/erHX+ITd2AtQw7kgzmOd0DomUx0NhHQ/zAoK7lf+w7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" alt="SJL" class="header-logo-img">
+    <span>Kilpailusäännöt</span>
     <div class="header-season">2025–2026</div>
   </div>
   <button id="home-toggle" onclick="showHome()" aria-label="Etusivu">
@@ -755,7 +762,8 @@
   <!-- HOME VIEW -->
   <div id="home-view">
     <div class="home-hero">
-      <div class="home-hero-title">SJL Kilpailusäännöt</div>
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/7QB8UGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAASAAAAAEAAQBIAAAAAQABOEJJTQQEAAAAAABEHAIFAB5MRUlKT05BVC1NQUFKT1VLS1VFLVRVTk5VUy1QTVMcAjcACDIwMTgwODExHAI+AAgyMDE4MDgxMRwCAAACAAT/4QDuRXhpZgAATU0AKgAAAAgABgEaAAUAAAABAAAAVgEbAAUAAAABAAAAXgEoAAMAAAABAAIAAAExAAIAAAApAAAAZgITAAMAAAABAAEAAIdpAAQAAAABAAAAkAAAAAAAAABIAAAAAQAAAEgAAAABUGhvdG9zaGVsdGVyIGh0dHA6Ly93d3cucGhvdG9zaGVsdGVyLmNvbQAAAAWQAAAHAAAABDAyMzGQAwACAAAAFAAAANKRAQAHAAAABAECAwCgAAAHAAAABDAxMDCgAQADAAAAAf//AAAAAAAAMjAxODowODoxMSAxODoyNjoyMwD/4Q2vaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pgo8eDp4bXBtZXRhIHhtbG5zOng9J2Fkb2JlOm5zOm1ldGEvJyB4OnhtcHRrPSdJbWFnZTo6RXhpZlRvb2wgMTEuMTAnPgo8cmRmOlJERiB4bWxuczpyZGY9J2h0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMnPgoKIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PScnCiAgeG1sbnM6ZGM9J2h0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvJz4KICA8ZGM6ZGF0ZT4KICAgPHJkZjpTZXE+CiAgICA8cmRmOmxpPjIwMTgtMDgtMTFUMTg6MjY6MjM8L3JkZjpsaT4KICAgPC9yZGY6U2VxPgogIDwvZGM6ZGF0ZT4KICA8ZGM6dGl0bGU+CiAgIDxyZGY6QWx0PgogICAgPHJkZjpsaSB4bWw6bGFuZz0neC1kZWZhdWx0Jz5MRUlKT05BVC1NQUFKT1VLS1VFLVRVTk5VUy1QTVM8L3JkZjpsaT4KICAgPC9yZGY6QWx0PgogIDwvZGM6dGl0bGU+CiA8L3JkZjpEZXNjcmlwdGlvbj4KCiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0nJwogIHhtbG5zOmV4aWY9J2h0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvJz4KICA8ZXhpZjpEYXRlVGltZURpZ2l0aXplZD4yMDE4LTA4LTExVDE4OjI2OjIzPC9leGlmOkRhdGVUaW1lRGlnaXRpemVkPgogPC9yZGY6RGVzY3JpcHRpb24+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczpwaG90b3Nob3A9J2h0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8nPgogIDxwaG90b3Nob3A6RGF0ZUNyZWF0ZWQ+MjAxOC0wOC0xMVQxODoyNjoyMzwvcGhvdG9zaG9wOkRhdGVDcmVhdGVkPgogPC9yZGY6RGVzY3JpcHRpb24+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczp4bXA9J2h0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8nPgogIDx4bXA6Q3JlYXRlRGF0ZT4yMDE4LTA4LTExVDE4OjI2OjIzPC94bXA6Q3JlYXRlRGF0ZT4KIDwvcmRmOkRlc2NyaXB0aW9uPgo8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAo8P3hwYWNrZXQgZW5kPSd3Jz8+/9sAQwAFAwQEBAMFBAQEBQUFBgcMCAcHBwcPCwsJDBEPEhIRDxERExYcFxMUGhURERghGBodHR8fHxMXIiQiHiQcHh8e/9sAQwEFBQUHBgcOCAgOHhQRFB4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4e/8AAEQgAUABgAwERAAIRAQMRAf/EABwAAAIDAQEBAQAAAAAAAAAAAAAHBQYIBAMBAf/EADwQAAIBAwMCBAQDBQYHAAAAAAECAwQFEQAGIQcSEzFBURQiYXEIgZEVIzKhsTNCUnKSwRYkQ1JTYoL/xAAaAQACAwEBAAAAAAAAAAAAAAAABAECAwUG/8QALxEAAgIBBAAEBAYCAwAAAAAAAAECAxEEEiExQRMiUWEFcYGhFDKRsfDxQsHR4f/aAAwDAQACEQMRAD8A2XoQtCFoQtCFoQtCFoQg8aSCTJoQPPVknlIpYZ0c1v42KtPCfiAIFVgv9pGe1gQcYPpjnWsc4yLVhHqQ+8T2vbKo/h/6gV1+sdyzWS5R1r0rVVOsT00jhDMoPbLG2cEYOfrq3jSxy/sYPRqEuYM/96X0OVv1HSNV20+3tpXH4mCGpFZHVxtT1ELoyqQQ2QyggggjjnWnhzTzgT8encsZQz+jLdNsrvGD0l13au4amoq0EjW+9wSmCqhQqT2YYKHjjBGM86ydE4yw8pFZ6GUMSSynyaCj6j7DjNHHU3ieCmqUjqY46llp5AwOQ0bMO0jjj76jxYLvH3MmrIPplVb68q/xA9L7dcqm2wXGWpkg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" alt="SJL" class="home-hero-logo">
+      <div class="home-hero-title">Kilpailusäännöt</div>
       <div class="home-hero-sub">Suomen Jääkiekkoliitto • Kausi 2025–2026</div>
       <div class="home-search-wrapper-hero">
         <input type="text" id="home-search" placeholder="Hae säännöistä..." oninput="doHomeSearch(this.value)">
@@ -1107,6 +1115,20 @@ Jos naispuolisen pelaajan edustusoikeus on seurassa, jossa ei ole naisten sarjas
 
 Pojat:
 Pelaaja, joka pelaa yli-ikäisenä U16 tai vanhemmissa eikä omassa seurassa ole muuta joukkuetta, voi saada kaksoisedustuksen miesten joukkueeseen.`
+        },
+        {
+          id: "5.8",
+          title: "Siirretyn ottelun edustuskelpoiset pelaajat",
+          content: `Siirrettyyn otteluun saavat osallistua kaikki uutena pelipäivänä edustuskelpoiset pelaajat.`
+        },
+        {
+          id: "5.9",
+          title: "Uudelleen pelattavaksi määrätyn ottelun edustuskelpoiset pelaajat",
+          content: `Uudelleen pelattavaksi määrättyyn otteluun saavat osallistua vain ne, jotka olivat merkittynä ottelupöytäkirjaan alkuperäisenä pelipäivänä ja ovat uutena pelipäivänä edelleen edustuskelpoisia ko. seurassa.
+
+Mikäli alkuperäisen ottelun kokoonpanosta on 3 tai enemmän uusintaottelussa edustuskelvottomaksi todettavia pelaajia, saa seura korvata heidät edustuskelpoisilla pelaajilla.
+
+Uudelleen pelattavassa ottelussa eivät voi pelata ne, jotka ovat alkuperäisessä ottelussa saaneet pelirangaistuksen.`
         }
       ]
     },
@@ -1171,12 +1193,30 @@ Jos kaikkien seuran U16- ja vanhempien ikäluokkien pelaajat siirtyvät toiseen 
         },
         {
           id: "6.6",
+          title: "Seurasiirrot seurayhteisön junioreista",
+          content: `Seurayhteisön juniorit on siirrettävä kausittain ennen sarjakauden alkua valitsemaansa seurayhteisön edustusseuraan seurayhteisösiirrolla, kun he eivät enää voi ikänsä puolesta edustaa junioriseuraa.
+
+Edustusjoukkue voi käyttää otteluissaan kaikkia seurayhteisön edustuskelpoisia junioreita. Seurayhteisön sisäinen yhteistyösopimus on oltava olemassa edustusseuran ja junioriseuran välillä.
+
+Kun pelaaja on siirretty seurayhteisösiirrolla edustusseuraan, ei pelaaja voi enää seurayhteisösiirrolla palata junioriseuraan.`
+        },
+        {
+          id: "6.7",
           title: "Ulkomaiset pelaajasiirrot",
           content: `Ulkomaisissa pelaajasiirroissa noudatetaan SJL:n ja IIHF:n sääntöjä ja aikarajoja.
 
 U15 ja nuorempien osalta siirtoaika päättyy 30.11. paitsi jos pelaaja muuttaa Suomeen pysyvästi huoltajansa mukana.
 
 Alle 18-v. pelaaja voi siirtyä Suomeen pysyvällä siirrolla ainoastaan, jos pelaaja muuttaa huoltajan kanssa pysyvästi Suomeen.`
+        },
+        {
+          id: "6.8",
+          title: "Välityslautakunta ja SJL:n kilpailuvaliokunta",
+          content: `Välityslautakuntaan kuuluvat SJL:n ja liigan toimitusjohtajat sekä ulkopuolinen puheenjohtaja. Välityslautakunta käsittelee pelaajien siirtymiseen liigaseuran ja SJL:n sarjoissa pelaavan seuran välillä liittyvät erimielisyydet.
+
+Jos seurat eivät pääse yksimielisyyteen edustusoikeuden siirron ehdoista, välityslautakunta ratkaisee siirron ehdot lopullisesti.
+
+SJL:n kilpailuvaliokunta ei ratkaise voimassa olevan pelaajasopimuksen purkuun liittyvää riitaa, eikä riitoja taloudellisten velvoitteiden oikeellisuudesta.`
         }
       ]
     },
@@ -1231,7 +1271,7 @@ Miesten sarjoissa kesken sarjan luovuttanutta joukkuetta ei voida hyväksyä ko.
         },
         {
           id: "7.6",
-          title: "Pisteet ja järjestys",
+          title: "Pisteet ja järjestys sarjassa",
           content: `Ilman jatkoaikaa:
 Voittanut joukkue saa 2 pistettä, hävinnyt 0 pistettä. Tasapeli: kumpikin saa 1 pisteen.
 
@@ -1246,6 +1286,25 @@ Tasapistetilanteessa ratkaisee:
         },
         {
           id: "7.7",
+          title: "Tulostiedotus",
+          content: `Valtakunnallisista sarjoista sekä SJL:n erikseen määräämistä otteluista on järjestävän seuran ilmoitettava pyydetyt tiedot tulostiedotukseen sarjan järjestäjän antamien ohjeiden mukaisesti.`
+        },
+        {
+          id: "7.8",
+          title: "Mediaoikeudet, kuvaus ja tallennus",
+          content: `SJL:n järjestämien kaikkien sarjojen ja otteluiden mediaoikeudet kuuluvat kokonaisuudessaan liitolle.
+
+Seura tarvitsee aina luvan liitolta liikkuvan kuvan lähettämiseen kotiotteluistaan.
+
+Miesten Suomi-sarjan, U20 SM-sarjan, U18 ja U16 SM-sarjatasojen kaikki ottelut on kuvattava.`
+        },
+        {
+          id: "7.9",
+          title: "Otteluiden talous",
+          content: `Kaikissa otteluissa talous on 100 % - 0 %. Järjestävä seura saa ottelusta kaikki tulot ja huolehtii kaikista ottelun järjestämisestä ja pelaamisesta aiheutuvista kuluista. Vieraileva joukkue maksaa omat kulunsa.`
+        },
+        {
+          id: "7.10",
           title: "Lääkäri ja ensiapu",
           content: `Mestiksen ja U20 SM-sarjan otteluissa on lääkärin läsnäolo pakollinen.
 
@@ -1254,13 +1313,24 @@ Muissa sarjoissa on lääkärin tai ensiapukoulutuksen saaneen henkilön läsnä
 Ottelussa pelaava pelaaja ei voi olla samanaikaisesti ensiapuhenkilö.`
         },
         {
-          id: "7.8",
-          title: "Mediaoikeudet",
-          content: `SJL:n järjestämien kaikkien sarjojen ja otteluiden mediaoikeudet kuuluvat kokonaisuudessaan liitolle.
+          id: "7.11",
+          title: "Ottelusiirrot",
+          content: `Sarjan järjestäjä voi koska tahansa siirtää minkä tahansa ottelun pakottavista syistä ilman joukkueiden suostumusta.
 
-Seura tarvitsee aina luvan liitolta liikkuvan kuvan lähettämiseen kotiotteluistaan.
+Ottelusiirto voi tapahtua ainoastaan molempien seurojen suostumuksella. Siirtoanomus on tehtävä kirjallisesti.
 
-Miesten Suomi-sarjan, U20 SM-sarjan, U18 ja U16 SM-sarjatasojen kaikki ottelut on kuvattava.`
+Seura on oikeutettu anomaan siirtoa sarjaotteluun, jos joukkueen pelaajista kolme (3) tai enemmän on valittu maajoukkue- tai kartoitustapahtumaan.`
+        },
+        {
+          id: "7.12",
+          title: "Erotuomari- ja toimitsijamäärät",
+          content: `Erotuomarimäärät valtakunnallisissa sarjoissa on määritelty erillisessä taulukossa.
+
+Viralliset toimitsijat sarjoittain:
+• Mestis: Pöytäkirjan pitäjä, tulostaulun hoitaja, rangaistusaition valvojat
+• Auroraliiga: Pöytäkirjan pitäjä sekä tulostaulun hoitaja
+• U20 SM-sarja: Pöytäkirjan pitäjä sekä tulostaulun hoitaja
+• Suomi-Sarja: Pöytäkirjan pitäjä`
         }
       ]
     },
@@ -1285,14 +1355,16 @@ Tärkeysjärjestys:
           title: "Harjoitusottelut ja turnaukset",
           content: `Turnaus on harjoitusottelutapahtuma, johon osallistuu useampi kuin kolme eri seurojen joukkuetta ja joka pelataan samalla tai vierekkäisillä kentillä.
 
-Kaikkiin turnauksiin on anottava turnauslupa paikalliselta SJL:n Alueelta.
-
-Turnauslupia ei myönnetä sarjatoiminnan aikana pois lukien talvilomat helmi-maaliskuussa.`
+Joukkue ei saa osallistua ulkopuolisen tahon järjestämään turnaukseen sarjakauden aikana vaan ainoastaan sarjatauolla.`
         },
         {
           id: "8.3",
-          title: "Kansainväliset otteluluvat",
-          content: `SJL:n jäsenseuran, joka haluaa pelata ottelun ulkomailla tai kotimaassa ulkomaisen seuran kanssa, on haettava liitolta ottelulupaa viimeistään 14 vrk ennen ottelua.
+          title: "Luvat",
+          content: `Turnausluvat:
+Kaikkiin turnauksiin (juniorit ja seniorit) on anottava turnauslupa paikalliselta SJL:n Alueelta. Turnauslupia ei myönnetä sarjatoiminnan aikana pois lukien talvilomat helmi-maaliskuussa.
+
+Kansainväliset otteluluvat:
+SJL:n jäsenseuran, joka haluaa pelata ottelun ulkomailla tai kotimaassa ulkomaisen seuran kanssa, on haettava liitolta ottelulupaa viimeistään 14 vrk ennen ottelua.
 
 Kansainvälinen ottelulupa on toimitettava paikalliselle erotuomarikerholle ennen kuin erotuomarit voidaan nimetä.`
         },
@@ -1308,12 +1380,40 @@ Tupakan ja alkoholin käyttö pelaajille ja toimitsijoille tarkoitetuissa tilois
         },
         {
           id: "8.5",
+          title: "Seuratoimitsijat",
+          content: `Muissa kuin SJL:n määräämissä virallisissa erotuomarikortin vaativissa toimitsijatehtävissä voi seura käyttää omia seuratoimitsijoitaan.
+
+Seuratoimitsijoiden koulutuksesta vastaa seura. Seuran toimitsijavastaavien koulutuksesta vastaa SJL.
+
+SJL voi velvoittaa seuran käyttämään virallisia toimitsijoita, mikäli seuratoimitsijoiden työskentelyssä havaitaan puutteita.`
+        },
+        {
+          id: "8.6",
+          title: "Vierailevan joukkueen velvollisuudet",
+          content: `Vierailevan joukkueen on riittävän ajoissa ilmoitettava joukkueensa kokoonpano.
+
+Epävarmojen olosuhteiden vallitessa on vierailevan joukkueen ilmoitettava lähtöaikansa ja matkustustapansa järjestäjälle.`
+        },
+        {
+          id: "8.7",
           title: "Ottelun alkamisaika",
           content: `Nuorten ja juniorisarjojen matkaottelut on aloitettava perjantaita ja lauantaita lukuun ottamatta viimeistään klo 20.00.
 
-Alkamisaika on määriteltävä siten, että vierasjoukkue ehtii otteluun saman vuorokauden aikana.
+Alkamisaika on määriteltävä siten, että vierasjoukkue ehtii otteluun saman vuorokauden aikana. Lähtökohtaisesti vierasjoukkueen ei tarvitse lähteä matkaan ennen klo 06.00.
 
 U20 SM-sarjan pudotuspelien alkamisaika on oltava klo 12.00 – 20.00 välillä.`
+        },
+        {
+          id: "8.8",
+          title: "Uudelleen pelattavaksi määrätty ottelu",
+          content: `Olosuhteiden vuoksi uudelleen pelattavaksi määrätty ottelu pelataan samalla paikkakunnalla kuin alkuperäinen ottelu.
+
+Seurojen on sovittava uusi pelipäivä viikon kuluessa ottelun peruuntumisesta.`
+        },
+        {
+          id: "8.9",
+          title: "Erotuomarien pukeutumistilat",
+          content: `Erotuomaristolle on varattava oma pukeutumistila, joka voidaan lukita ottelun ajaksi niin ettei muilla ole pääsyä ko. tilaan ottelun aikana.`
         }
       ]
     }
